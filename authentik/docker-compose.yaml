@@ -27,11 +27,7 @@ services:
       - AUTHENTIK_EMAIL__FROM=${EMAIL_FROM:EMAIL_FROM}
     ports:
       - 9000:9000
-      - 9543:9443
-    labels:
-      - "com.centurylinklabs.watchtower.enable=false"
-    security_opt:
-      - no-new-privileges=true
+      - 9443:9443
     volumes:
       - ./media:/media
       - ./custom-templates:/templates
@@ -67,8 +63,6 @@ services:
       - AUTHENTIK_EMAIL__USE_SSL=true
       - AUTHENTIK_EMAIL__TIMEOUT=10
       - AUTHENTIK_EMAIL__FROM=${EMAIL_FROM:EMAIL_FROM}
-    labels:  
-      - "com.centurylinklabs.watchtower.enable=false"
     user: root
     volumes:
       - /run/docker.sock:/run/docker.sock
@@ -92,8 +86,6 @@ services:
       interval: 30s
       retries: 5
       timeout: 3s
-    labels:  
-      - "com.centurylinklabs.watchtower.enable=false"
     volumes:
       - redis_data:/data
     env_file:
@@ -108,8 +100,6 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB:POSTGRES_DB}
       - TZ=${TZ:TZ}
-    labels:  
-      - "com.centurylinklabs.watchtower.enable=false"
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U "${POSTGRES_USER:POSTGRES_USER}"']
       start_period: 30s
