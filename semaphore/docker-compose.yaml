@@ -8,8 +8,6 @@ services:
       - MYSQL_DATABASE=semaphore_db
       - MYSQL_USER=${MYSQL_USER:MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD:{MYSQL_PASSWORD}
-    security_opt:
-      - no-new-privileges=false
     env_file:
       - .env
     volumes:
@@ -38,10 +36,8 @@ services:
       - SEMAPHORE_EMAIL_PORT=587
       - SEMAPHORE_EMAIL_USERNAME=${SEMAPHORE_EMAIL_USERNAME:SEMAPHORE_EMAIL_USERNAME}
       - SEMAPHORE_EMAIL_PASSWORD=${SEMAPHORE_EMAIL_PASSWORD:SEMAPHORE_EMAIL_PASSWORD}
-    security_opt:
-      - no-new-privileges=true
     ports:
-      - 3002:3000
+      - 3000:3000
     env_file:
       - .env
     volumes:
