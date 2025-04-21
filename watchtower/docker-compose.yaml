@@ -19,8 +19,6 @@ services:
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_ROLLING_RESTART=true                           
       - WATCHTOWER_SCHEDULE=0 0 1 * * 6  #сек0 мин0 час1 год месяц день6
-    security_opt:
-      - no-new-privileges=true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /etc/localtime:/etc/localtime:ro
